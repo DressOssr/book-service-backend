@@ -19,6 +19,9 @@ export class AuthService {
 
     async signUp(userDto: CreateUserDto) {
 
+        if(userDto.password !== userDto.confirmPassword){
+            throw new BadRequestException("Password is not equals");
+        }
         const existUser = await this.userService.findByEmail(userDto.email);
         if (existUser) {
             throw new BadRequestException("User is exist");

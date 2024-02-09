@@ -8,6 +8,8 @@ import { User } from "./users/user.model";
 import { RoleModule } from "./role/role.module";
 import { Role } from "./role/role.model";
 import { AuthModule } from "./auth/auth.module";
+import { ControllerModule } from './service/controller/controller.module';
+import { BooksController } from './books/books.controller';
 
 @Module({
   imports:
@@ -30,9 +32,10 @@ import { AuthModule } from "./auth/auth.module";
       }),
       UsersModule,
       RoleModule,
-      AuthModule
+      AuthModule,
+      ControllerModule
     ],
-  controllers: [],
+  controllers: [BooksController],
   providers: []
 })
 export class AppModule {

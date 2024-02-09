@@ -5,4 +5,6 @@ export class CreateUserDto {
     readonly email: string;
     @ApiProperty({example: 'password', description: "User password", nullable: false })
     readonly password: string;
+    @ApiProperty({example: 'password', description: "User confirm password", nullable: false })
+    readonly confirmPassword: string;
 }
