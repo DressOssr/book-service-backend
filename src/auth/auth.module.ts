@@ -13,8 +13,8 @@ import {RoleModule} from "../role/role.module";
     controllers: [AuthController],
     imports: [
         forwardRef(() => UsersModule),
+        forwardRef(() => RoleModule),
         JwtModule.register({}),
-        RoleModule
     ],
     exports: [
         AuthService,

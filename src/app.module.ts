@@ -1,5 +1,4 @@
 import { Module } from "@nestjs/common";
-
 import { SequelizeModule } from "@nestjs/sequelize";
 import { UsersModule } from "./users/users.module";
 import { ConfigModule } from "@nestjs/config";
@@ -10,6 +9,10 @@ import { Role } from "./role/role.model";
 import { AuthModule } from "./auth/auth.module";
 import { BookController } from './book/book.controller';
 import { BookModule } from './book/book.module';
+import { AuthorService } from './author/author.service';
+import { CategoryModule } from './category/category.module';
+import { AuthorModule } from './author/author.module';
+import { AuthorController } from './author/author.controller';
 
 @Module({
   imports:
@@ -33,9 +36,11 @@ import { BookModule } from './book/book.module';
       UsersModule,
       RoleModule,
       AuthModule,
-      BookModule
+      BookModule,
+      AuthorModule,
+      CategoryModule
     ],
-  controllers: [BookController],
+  controllers: [],
   providers: []
 })
 export class AppModule {
