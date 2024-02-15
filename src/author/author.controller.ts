@@ -7,7 +7,7 @@ export class AuthorController {
   constructor(private authorService: AuthorService) {
   }
 
-  @Post("create")
+  @Post()
   async createAuthor(@Body() authorDto: AuthorDto) {
     return await this.authorService.create(authorDto);
   }

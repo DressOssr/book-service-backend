@@ -10,8 +10,12 @@ export class CategoryController {
   ) {
   }
 
-  @Post("create")
+  @Post()
   async createCategory(@Body() dto:CategoryDto){
     return await this.categoryService.create(dto)
+  }
+  @Post("/many")
+  async createCategories(@Body() dto:CategoryDto[]){
+    return await this.categoryService.createMany(dto)
   }
 }
