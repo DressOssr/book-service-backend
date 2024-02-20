@@ -38,7 +38,6 @@ export class RoleGuard implements CanActivate {
             request.user = user;
             return requiredRole.includes(user.role);
         } catch (e) {
-            console.log(e);
             throw new UnauthorizedException({message: "User is not authorized"})
         }
     }

@@ -1,22 +1,21 @@
-import { IsArray, IsDateString, IsNumber, IsString } from "class-validator";
+import { IsArray, IsDateString, IsNumber, IsOptional, IsString } from "class-validator";
 
 export class BookDto{
   @IsString()
   title: string
+  @IsOptional()
   @IsString()
-  subtitle: string
-  @IsNumber()
-  price:number
+  subtitle: string | null
+  @IsString()
+  price:string
   @IsDateString()
   publishedDate: string
   @IsString()
   description: string
   @IsString()
-  image: string
-  @IsString()
   publisher: string
-  @IsArray()
-  authorsId:number[]
-  @IsArray()
-  categoriesId:number[]
+  @IsString()
+  authorsId:string
+  @IsString()
+  categoriesId:string
 }
