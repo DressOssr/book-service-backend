@@ -14,4 +14,8 @@ export class AuthorService {
    async create(authorDto:AuthorDto){
     return await this.authorModel.create(authorDto)
   }
+
+  async getAll() {
+    return this.authorModel.findAll();
+  }
 }

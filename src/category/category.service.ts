@@ -17,4 +17,8 @@ export class CategoryService {
   async createMany(dto: CategoryDto[]) {
     return await this.categoryModel.bulkCreate(dto)
   }
+
+  async getAll() {
+    return await this.categoryModel.findAll();
+  }
 }

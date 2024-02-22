@@ -14,8 +14,8 @@ export class BookDto{
   description: string
   @IsString()
   publisher: string
-  @IsString()
+  @IsString({each: true})
   authorsId:string
-  @IsString()
-  categoriesId:string
+  @IsString({each: true})
+  categoriesId: string[]
 }

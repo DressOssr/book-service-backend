@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from "@nestjs/common";
+import { Body, Controller, Get, Post } from "@nestjs/common";
 import { AuthorService } from "./author.service";
 import { AuthorDto } from "./dto/author.dto";
 
@@ -11,5 +11,8 @@ export class AuthorController {
   async createAuthor(@Body() authorDto: AuthorDto) {
     return await this.authorService.create(authorDto);
   }
-
+  @Get()
+  async GetAll() {
+    return await this.authorService.getAll();
+  }
 }

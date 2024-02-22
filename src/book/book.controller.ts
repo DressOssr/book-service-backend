@@ -2,6 +2,9 @@ import { Body, Controller, Get, Param, Post, UploadedFile, UseGuards, UseInterce
 import { BookService } from "./book.service";
 import { FileInterceptor } from "@nestjs/platform-express";
 import { BookDto } from "./dto/book.dto";
+import { RoleGuard } from "../auth/guard/role.guard";
+import { Roles } from "../auth/decorator/role-auth.decorator";
+import { AccessTokenGuard } from "../auth/common/accessToken.guard";
 
 @Controller("book")
 export class BookController {
@@ -11,9 +14,9 @@ export class BookController {
 
   }
 
-  // @UseGuards(RoleGuard)
-  // @Roles("ADMIN")
-  // @UseGuards(AccessTokenGuard)
+  @UseGuards(RoleGuard)
+  @Roles("ADMIN")
+  @UseGuards(AccessTokenGuard)
   @UseInterceptors(FileInterceptor('image'))
   @Post()
   async createBook(@Body() dto:BookDto,@UploadedFile() image) {
