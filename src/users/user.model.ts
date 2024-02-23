@@ -28,7 +28,6 @@ export class User extends Model<User,UserCreationAttrs> {
     @Column({type:DataType.INTEGER})
     roleId:number
 
-
     @BelongsTo(()=>Role)
     role:Role
 }

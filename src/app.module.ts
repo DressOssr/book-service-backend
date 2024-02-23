@@ -13,6 +13,7 @@ import { AuthorService } from './author/author.service';
 import { CategoryModule } from './category/category.module';
 import { AuthorModule } from './author/author.module';
 import { AuthorController } from './author/author.controller';
+import { ImageModule } from './image/image.module';
 
 @Module({
   imports:
@@ -38,7 +39,8 @@ import { AuthorController } from './author/author.controller';
       AuthModule,
       BookModule,
       AuthorModule,
-      CategoryModule
+      CategoryModule,
+      ImageModule
     ],
   controllers: [],
   providers: []
