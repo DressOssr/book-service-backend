@@ -49,11 +49,9 @@ export class BookService {
   async createBook(dto: BookDto,image) {
     const imageInBd =  await this.imageService.create({fileName:image.originalname,buffer:image.buffer});
     const {authorsId,categoriesId,...obj} = dto;
-    console.log(categoriesId);
     const book =  await this.bookModel.create({...obj,imageId:imageInBd.id});
     await this.addToBookAuthor(book.id,authorsId)
     await this.addToBookCategory(book.id,categoriesId);
-    console.log(book);
     return book;
   }
 

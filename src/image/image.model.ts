@@ -12,8 +12,8 @@ export class Image extends Model<Image,ImageCreationAttrs>{
   id: number
   @Column({type: DataType.STRING})
   fileName: string
-  @Column({type: DataType.BLOB})
-  buffer: Buffer
+  @Column({type: DataType.TEXT})
+  buffer: string
   @HasOne(() => Book)
   book: Book
 }
