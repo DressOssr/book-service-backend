@@ -1,9 +1,10 @@
-import { Body, Controller, Get, Post, UseGuards } from "@nestjs/common";
+import { Body, Controller, Get, Post, UseGuards, UseInterceptors } from "@nestjs/common";
 import { CategoryService } from "./category.service";
 import { CategoryDto } from "./dto/category.dto";
 import { RoleGuard } from "../auth/guard/role.guard";
 import { Roles } from "../auth/decorator/role-auth.decorator";
 import { AccessTokenGuard } from "../auth/common/accessToken.guard";
+import { NoFilesInterceptor } from "@nestjs/platform-express";
 
 @Controller('category')
 export class CategoryController {
@@ -16,6 +17,7 @@ export class CategoryController {
   @Roles("ADMIN")
   @UseGuards(AccessTokenGuard)
   @Post()
+  @UseInterceptors(NoFilesInterceptor())
   async createCategory(@Body() dto:CategoryDto){
     return await this.categoryService.create(dto)
   }
