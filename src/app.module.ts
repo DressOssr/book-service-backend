@@ -14,6 +14,7 @@ import { CategoryModule } from './category/category.module';
 import { AuthorModule } from './author/author.module';
 import { AuthorController } from './author/author.controller';
 import { ImageModule } from './image/image.module';
+import { CartModule } from './cart/cart.module';
 
 @Module({
   imports:
@@ -40,7 +41,8 @@ import { ImageModule } from './image/image.module';
       BookModule,
       AuthorModule,
       CategoryModule,
-      ImageModule
+      ImageModule,
+      CartModule
     ],
   controllers: [],
   providers: []

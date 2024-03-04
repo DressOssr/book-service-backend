@@ -26,7 +26,7 @@ export class Book extends Model<Book,BookCreationAttrs>{
   price:number
   @Column({type:DataType.DATE})
   publishedDate: string
-  @Column({type:DataType.STRING})
+  @Column({type:DataType.TEXT})
   description: string
   @Column({type:DataType.STRING})
   publisher: string
