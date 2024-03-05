@@ -30,10 +30,10 @@ import { CartModule } from './cart/cart.module';
         password: process.env.POSTGRES_PASSWORD,
         database: process.env.POSTGRES_DB,
         models: [User, Role],
-        synchronize: true,
         autoLoadModels: true,
         logging: console.log,
-        sync: { force: false, alter: true }
+        // synchronize: true,
+        // sync: { force: false, alter: true }
       }),
       UsersModule,
       RoleModule,

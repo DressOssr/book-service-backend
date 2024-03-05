@@ -10,7 +10,11 @@ export class CartService {
     private cartModel: typeof Cart
   ) {
   }
-  async createCart({bookId, userId}) {
+  async createCart(bookId:number,userId:number) {
     return this.cartModel.create({bookId, userId})
+  }
+
+  async getCount(id:number) {
+    return this.cartModel.count({where:{userId:id}})
   }
 }
