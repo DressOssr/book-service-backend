@@ -1,7 +1,8 @@
 import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/sequelize";
-import { Author } from "../author/author.model";
 import { Cart } from "./cart.model";
+import { Book } from "../book/book.model";
+import { Image } from "../image/image.model";
 
 @Injectable()
 export class CartService {
@@ -16,5 +17,21 @@ export class CartService {
 
   async getCount(id:number) {
     return this.cartModel.count({where:{userId:id}})
+  }
+
+  async getUserCartItem(id: number) {
+    return this.cartModel.findAll({
+      where: {
+        userId: id
+      },
+      include: [{
+        model:Book,
+        include:[Image]
+      }]
+    })
+  }
+
+  async deleteById(id: number, userId: number) {
+    return this.cartModel.destroy({where:{id,userId}})
   }
 }

@@ -25,12 +25,12 @@ export class BookController {
   }
 
   @Get(":id")
-  async getById(@Param() params: any) {
+  async getBookById(@Param() params: any) {
     return await this.bookService.getBookById(params.id);
   }
 
   @Get()
-  async getAll() {
+  async getAllBook() {
     return await this.bookService.getAllBook();
   }
 }

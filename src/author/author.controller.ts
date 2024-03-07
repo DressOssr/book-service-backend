@@ -17,7 +17,6 @@ export class AuthorController {
   @UseGuards(AccessTokenGuard)
   @UseInterceptors(NoFilesInterceptor())
   async createAuthor(@Body() authorDto: AuthorDto) {
-    // console.log(authorDto);
     return await this.authorService.create(authorDto);
   }
   @Get()
