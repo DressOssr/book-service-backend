@@ -105,7 +105,7 @@ export class AuthService {
           user.refreshToken,
           refreshToken,
         );
-        if (!refreshTokenMatches) throw new ForbiddenException('Access Denied');
+        if (!refreshTokenMatches) throw new ForbiddenException('Refresh token is incorrect');
         const userRole = await this.roleService.findById(user.roleId);
         const tokens = await this.getTokens(user.id, user.email,userRole.role);
         await this.updateRefreshToken(user.id, tokens.refreshToken);

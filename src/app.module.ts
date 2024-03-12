@@ -7,14 +7,20 @@ import { User } from "./users/user.model";
 import { RoleModule } from "./role/role.module";
 import { Role } from "./role/role.model";
 import { AuthModule } from "./auth/auth.module";
-import { BookController } from './book/book.controller';
 import { BookModule } from './book/book.module';
-import { AuthorService } from './author/author.service';
 import { CategoryModule } from './category/category.module';
 import { AuthorModule } from './author/author.module';
-import { AuthorController } from './author/author.controller';
 import { ImageModule } from './image/image.module';
 import { CartModule } from './cart/cart.module';
+import { FavoriteModule } from './favorite/favorite.module';
+import { Book } from "./book/book.model";
+import { Cart } from "./cart/cart.model";
+import { Favorite } from "./favorite/favorite.model";
+import { BookAuthor } from "./author/bookAuthor.model";
+import { BookCategory } from "./category/bookCategory.model";
+import { Author } from "./author/author.model";
+import { Category } from "./category/category.model";
+import { Image } from "./image/image.model";
 
 @Module({
   imports:
@@ -29,11 +35,10 @@ import { CartModule } from './cart/cart.module';
         username: process.env.POSTGRES_USER,
         password: process.env.POSTGRES_PASSWORD,
         database: process.env.POSTGRES_DB,
-        models: [User, Role],
+        models: [User, Role,Cart,Book,Favorite,BookAuthor,BookCategory,Author,Category,Image],
         autoLoadModels: true,
-        logging: console.log,
         // synchronize: true,
-        // sync: { force: false, alter: true }
+        // sync: { force: true, alter: true }
       }),
       UsersModule,
       RoleModule,
@@ -42,7 +47,8 @@ import { CartModule } from './cart/cart.module';
       AuthorModule,
       CategoryModule,
       ImageModule,
-      CartModule
+      CartModule,
+      FavoriteModule
     ],
   controllers: [],
   providers: []

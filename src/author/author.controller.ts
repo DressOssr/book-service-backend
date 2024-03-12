@@ -15,12 +15,11 @@ export class AuthorController {
   @UseGuards(RoleGuard)
   @Roles("ADMIN")
   @UseGuards(AccessTokenGuard)
-  @UseInterceptors(NoFilesInterceptor())
   async createAuthor(@Body() authorDto: AuthorDto) {
     return await this.authorService.create(authorDto);
   }
   @Get()
-  async GetAll() {
-    return await this.authorService.getAll();
+  getAll() {
+    return this.authorService.getAll();
   }
 }

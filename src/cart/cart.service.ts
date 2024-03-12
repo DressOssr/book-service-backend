@@ -11,27 +11,35 @@ export class CartService {
     private cartModel: typeof Cart
   ) {
   }
-  async createCart(bookId:number,userId:number) {
-    return this.cartModel.create({bookId, userId})
+
+  async createCart(bookId: number, userId: number) {
+    const cart = await this.cartModel.create({ bookId, userId });
+    return await this.cartModel.findOne({
+      where: { id: cart.id },
+      include: [{
+        model: Book,
+        include: [Image]
+      }]
+    });
   }
 
-  async getCount(id:number) {
-    return this.cartModel.count({where:{userId:id}})
+  async getCount(id: number) {
+    return this.cartModel.count({ where: { userId: id } });
   }
 
-  async getUserCartItem(id: number) {
+  async getUserCartItems(id: number) {
     return this.cartModel.findAll({
       where: {
         userId: id
       },
       include: [{
-        model:Book,
-        include:[Image]
+        model: Book,
+        include: [Image]
       }]
-    })
+    });
   }
 
-  async deleteById(id: number, userId: number) {
-    return this.cartModel.destroy({where:{id,userId}})
+  async deleteById(id: number) {
+    return this.cartModel.destroy({ where: { id } });
   }
 }

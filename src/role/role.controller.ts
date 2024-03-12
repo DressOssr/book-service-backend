@@ -22,7 +22,6 @@ export class RoleController {
     @UseGuards(RoleGuard)
     @Roles("ADMIN")
     @UseGuards(AccessTokenGuard)
-    @UseGuards(AccessTokenGuard)
     @Post()
     createRole(@Body() roleDto: CreateRoelDto): Promise<Role > {
         return this.roleService.createRole(roleDto);

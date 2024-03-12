@@ -25,6 +25,7 @@ export class RefreshTokenStrategy extends PassportStrategy(
     }
     validate(req:Request,payload: any) {
         const refreshToken = req.cookies && req.cookies["jwt-secure"];
+        console.log(refreshToken);
         if (!refreshToken) {
             throw new ForbiddenException('No refresh token found in cookies');
         }
