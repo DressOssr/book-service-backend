@@ -6,7 +6,7 @@ import { User } from "../users/user.model";
 interface FavoriteCreationAttrs {
 
 }
-@Table({tableName:"favorite"})
+@Table({tableName:"favorite",indexes: [{ unique: true, fields: ["userId", "bookId"] }]})
 export class Favorite extends Model<Favorite,FavoriteCreationAttrs>{
   @Column({type: DataType.INTEGER, unique: true, autoIncrement: true, primaryKey: true})
   id: number;

@@ -4,7 +4,8 @@ import { Book } from "../book/book.model";
 
 
 class ImageCreationAttrs {
-
+  fileName: string;
+  buffer: string;
 }
 @Table({tableName: "image"})
 export class Image extends Model<Image,ImageCreationAttrs>{

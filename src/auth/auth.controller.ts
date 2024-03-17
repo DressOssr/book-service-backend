@@ -10,7 +10,6 @@ import { RefreshTokenGuard } from "./common/refreshToken.guard";
 export class AuthController {
   constructor(private authService: AuthService) {
   }
-
   @Post("signup")
   async signup(@Res() res, @Body() createUserDto: CreateUserDto) {
     const {newUser,tokens} = await this.authService.signUp(createUserDto);
@@ -35,7 +34,6 @@ export class AuthController {
       throw e;
     }
   }
-
   @Post("signin")
   async signin(@Res() res, @Body() data: LoginDto) {
     const {user,tokens} = await this.authService.signIn(data);

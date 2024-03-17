@@ -21,6 +21,12 @@ import { BookCategory } from "./category/bookCategory.model";
 import { Author } from "./author/author.model";
 import { Category } from "./category/category.model";
 import { Image } from "./image/image.model";
+import { ReviewController } from './review/review.controller';
+import { ReviewService } from './review/review.service';
+import { ReviewModule } from './review/review.module';
+import { OrderController } from './order/order.controller';
+import { OrderService } from './order/order.service';
+import { OrderModule } from './order/order.module';
 
 @Module({
   imports:
@@ -48,10 +54,12 @@ import { Image } from "./image/image.model";
       CategoryModule,
       ImageModule,
       CartModule,
-      FavoriteModule
+      FavoriteModule,
+      ReviewModule,
+      OrderModule
     ],
-  controllers: [],
-  providers: []
+  controllers: [ReviewController, OrderController],
+  providers: [ReviewService, OrderService]
 })
 export class AppModule {
 }
