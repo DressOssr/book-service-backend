@@ -7,22 +7,17 @@ class OrderCreationAttrs {
   buffer: string;
 }
 
-@Table({ tableName: "order" })
+@Table({ tableName: "order" ,updatedAt: false})
 export class Order extends Model<Order, OrderCreationAttrs> {
   @Column({ type: DataType.INTEGER, unique: true, autoIncrement: true, primaryKey: true })
   id: number;
-  @Column({ type: DataType.INTEGER, defaultValue: 1 })
-  quantity: number;
   @BelongsTo(() => User)
   user: User;
+  @Column({ type: DataType.INTEGER })
+  totalPrice: number;
   @ForeignKey(() => User)
   userId: number;
-  @BelongsTo(() => Book)
-  book: Book;
   @ForeignKey(() => Book)
   bookId: number;
-  @Column({ type: DataType.TEXT })
-  reviewText: string;
-  @Column({ type: DataType.INTEGER })
-  rating: number;
+
 }

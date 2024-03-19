@@ -1,4 +1,14 @@
 import { Module } from '@nestjs/common';
+import { SequelizeModule } from "@nestjs/sequelize";
+import { Review } from "./review.model";
+import { ReviewService } from "./review.service";
+import { ReviewController } from "./review.controller";
 
-@Module({})
+@Module({
+  imports: [
+    SequelizeModule.forFeature([Review])
+  ],
+  providers: [ReviewService],
+  controllers: [ReviewController]
+})
 export class ReviewModule {}

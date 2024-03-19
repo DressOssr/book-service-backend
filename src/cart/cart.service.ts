@@ -13,9 +13,7 @@ export class CartService {
   }
 
   async createCart(bookId: number, userId: number) {
-    const cart = await this.cartModel.create({ bookId, userId });
-    return await this.cartModel.findOne({
-      where: { id: cart.id },
+    return await this.cartModel.create({ bookId, userId }, {
       include: [{
         model: Book,
         include: [Image]
