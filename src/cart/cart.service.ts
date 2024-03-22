@@ -3,6 +3,7 @@ import { InjectModel } from "@nestjs/sequelize";
 import { Cart } from "./cart.model";
 import { Book } from "../book/book.model";
 import { Image } from "../image/image.model";
+import { Author } from "../author/author.model";
 
 @Injectable()
 export class CartService {

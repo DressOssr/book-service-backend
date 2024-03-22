@@ -72,8 +72,7 @@ export class BookService {
   }
 
   async getBookById(id: number) {
-    const test = await this.bookModel.findByPk(id, this.option);
-    return test.dataValues;
+    return await this.bookModel.findByPk(id, this.option);
   }
   async getAllBook() {
     return await this.bookModel.findAll(this.option);
