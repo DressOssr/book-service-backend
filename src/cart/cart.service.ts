@@ -41,4 +41,7 @@ export class CartService {
   async deleteById(id: number) {
     return this.cartModel.destroy({ where: { id } });
   }
+  async clearCart(id: number) {
+    await this.cartModel.destroy({ where: { userId: id } });
+  }
 }

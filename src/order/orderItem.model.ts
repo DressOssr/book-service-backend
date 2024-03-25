@@ -5,18 +5,15 @@ import { Order } from "./order.model";
 
 interface OrderItemCreationAttrs {
   bookId: number;
-  userId: number;
+  quantity: number;
+  orderId:number;
 }
 @Table({ tableName: "orderItem",updatedAt: false})
 export class OrderItem extends Model<OrderItem, OrderItemCreationAttrs> {
   @Column({ type: DataType.INTEGER, unique: true, autoIncrement: true, primaryKey: true })
   id: number;
-  @Column({ type: DataType.INTEGER, defaultValue: 1 })
+  @Column({ type: DataType.INTEGER})
   quantity: number;
-  @BelongsTo(() => User)
-  user: User;
-  @ForeignKey(() => User)
-  userId: number;
   @BelongsTo(() => Book)
   book: Book;
   @ForeignKey(() => Book)

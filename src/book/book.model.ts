@@ -24,6 +24,8 @@ export class Book extends Model<Book,BookCreationAttrs>{
   subtitle: string
   @Column({type:DataType.DECIMAL})
   price:number
+  @Column({type:DataType.INTEGER})
+  quantity:number
   @Column({type:DataType.DATE})
   publishedDate: string
   @Column({type:DataType.TEXT})
