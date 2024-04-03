@@ -5,6 +5,8 @@ import { User } from "../users/user.model";
 class ReviewCreationAttrs {
   bookId: number;
   userId: number;
+  reviewText: string;
+  rating: number;
 }
 
 @Table({ tableName: "review" })
@@ -21,6 +23,8 @@ export class Review extends Model<Review, ReviewCreationAttrs> {
   bookId: number;
   @Column({ type: DataType.TEXT })
   reviewText: string;
-  @Column({ type: DataType.INTEGER, defaultValue: 5 ,validate: { min: 1, max: 5 }})
+  @Column({ type: DataType.TEXT })
+  name: string;
+  @Column({ type: DataType.INTEGER, defaultValue: 5, validate: { min: 1, max: 5 } })
   rating: number;
 }

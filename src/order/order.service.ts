@@ -3,8 +3,9 @@ import { orderDto } from "./dto/order.dto";
 import { Order } from "./order.model";
 import { InjectModel } from "@nestjs/sequelize";
 import { OrderItem } from "./orderItem.model";
-import { CartModule } from "../cart/cart.module";
 import { Book } from "../book/book.model";
+import { Image } from "../image/image.model";
+import { Author } from "../author/author.model";
 
 @Injectable()
 export class OrderService {
@@ -29,12 +30,24 @@ export class OrderService {
   }
 
   async getOrders(id: number) {
-    return this.orderModel.findAll({
-      where: { userId: id }, include:
+    const orders = await this.orderModel.findAll({
+      where: { userId: id }, include: [
         {
           model: OrderItem,
-          include:[Book],
+          include: [
+            {
+              model: Book,
+              include: [Image, Author]
+            }
+          ]
         }
+      ]
+
     });
+    return orders;
+    // return orders.reduce((acc, obj) => {
+    //   acc.push(...obj.orderItems);
+    //   return acc;
+    // }, []);
   }
 }

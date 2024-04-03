@@ -22,5 +22,5 @@ export class Order extends Model<Order, OrderCreationAttrs> {
   @ForeignKey(() => User)
   userId: number;
   @HasMany(()=>OrderItem)
-  OrderItems: OrderItem[];
+  orderItems: OrderItem[];
 }
