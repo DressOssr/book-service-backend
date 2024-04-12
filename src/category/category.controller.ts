@@ -5,6 +5,7 @@ import { RoleGuard } from "../auth/guard/role.guard";
 import { Roles } from "../auth/decorator/role-auth.decorator";
 import { AccessTokenGuard } from "../auth/common/accessToken.guard";
 import { NoFilesInterceptor } from "@nestjs/platform-express";
+import { CurrentUser } from "../users/decorator/user.decorator";
 
 @Controller('category')
 export class CategoryController {
@@ -30,7 +31,7 @@ export class CategoryController {
   }
 
   @Get()
-  async GetAll(){
+  async getAll(){
     return await this.categoryService.getAll()
   }
 }

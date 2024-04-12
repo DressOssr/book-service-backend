@@ -47,8 +47,8 @@ import { Order } from "./order/order.model";
         database: process.env.POSTGRES_DB,
         models: [User, Role, Cart, Book, Favorite, BookAuthor, BookCategory, Author, Category, Image,Order,OrderItem,Review],
         autoLoadModels: true,
-        synchronize: true,
-        sync: { force: false, alter: true }
+        // synchronize: true,
+        // sync: { force: false, alter: true }
       }),
       UsersModule,
       RoleModule,
