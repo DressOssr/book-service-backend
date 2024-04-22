@@ -25,7 +25,6 @@ export class UsersController {
   @Get()
   @UseGuards(AccessTokenGuard)
   async getById(@CurrentUser("sub") id: number) {
-    console.log(id);
     return await this.userService.findById(id);
   }
 

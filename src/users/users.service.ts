@@ -28,7 +28,6 @@ export class UsersService {
 
     async findAll(): Promise<User[]> {
         return await this.userModel.findAll({
-            include: {all: true},
             attributes:{ exclude: ['refreshToken',"password"]}
         });
     }
