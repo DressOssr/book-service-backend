@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, UseGuards } from "@nestjs/common";
+import { Body, Controller, Get, Param, Post, Put, UseGuards } from "@nestjs/common";
 import { RoleService } from "./role.service";
 import { CreateRoelDto } from "./dto/create-role";
 import { Role } from "./role.model";
@@ -13,7 +13,6 @@ export class RoleController {
     private roleService: RoleService
   ) {
   }
-
   // @ApiOperation({summary: "Add new role"})
   // @ApiParam({name: "role", required: true})
   // @ApiParam({name: "description", required: true})
@@ -38,4 +37,9 @@ export class RoleController {
   getAll() {
     return this.roleService.findAll();
   }
+
+
+
 }
+
+

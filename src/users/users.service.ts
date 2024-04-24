@@ -4,6 +4,7 @@ import {User} from "./user.model";
 import {CreateUserDto} from "./dto/create-user.dto";
 import {RoleService} from "../role/role.service";
 import {UpdateUserDto} from "./dto/update-user.dto";
+import { UpdateRoleDto } from "../role/dto/update-role.dto";
 
 
 Injectable()
@@ -61,5 +62,9 @@ export class UsersService {
         });
         await user.save()
         return user;
+    }
+
+    async updateRole(dto: UpdateRoleDto) {
+        return await this.userModel.update({roleId: dto.roleId}, {where: {id: dto.userId}})
     }
 }
